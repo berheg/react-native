@@ -11,17 +11,17 @@ import Icon from 'react-native-vector-icons/dist/FontAwesome';
 const ListItem = ({
   item,
 }) => {
-
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.listItemView}>
-
-          <Icon
-            name="remove"
-            size={20}
-            color="firebrick"
-          />
-        
+        <Text>
+            {item.text}
+        </Text>
+        <Icon
+          name="remove"
+          size={20}
+          color="firebrick"
+        />
       </View>
     </TouchableOpacity>
   );
