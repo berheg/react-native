@@ -17,30 +17,50 @@ import {
 
 import Header from './components/Header';
 import ListItem from './components/ListItem';
-//import AddItem from './components/AddItem';
+import AddItem from './components/AddItem';
 
 const App = () => {
   const [items, setItems] = useState([
     {
-      id: 1,
+      id: '1',
       text: 'Milk',
     },
     {
-      id: 2,
+      id: '2',
       text: 'Eggs',
     },
     {
-      id: 3,
+      id: '3',
       text: 'Bread',
     },
     {
-      id: 4,
+      id: '4',
       text: 'Juice',
     },
   ]);
+  const addItem = text => {
+    if (!text) {
+      Alert.alert(
+        'No item entered',
+        'Please enter an item when adding to your shopping list',
+        [
+          {
+            text: 'Understood',
+            style: 'cancel',
+          },
+        ],
+        {cancelable: true},
+      );
+    } else {
+      setItems(prevItems => {
+        return [{id: ({items}.length +1), text}, ...prevItems];
+      });
+    }
+  };
   return (
     <View style={styles.container}>
-      <Header title="Shopping List" />      
+      <Header title="Shopping List" />
+      <AddItem addItem={addItem} />
       <FlatList
         data={items}
         renderItem={({item}) => (
